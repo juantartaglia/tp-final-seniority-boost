@@ -37,7 +37,7 @@ public class RoomController {
 
     @PostMapping(produces = "application/json")
     public ResponseEntity<RoomDTO> create(@RequestBody @Validated RoomDTO roomDTO) {
-        roomDTO.setStatus("enabled");
+        roomDTO.setState("enabled");
         Room room = roomService.createRoom(RoomMapper.toRoom(roomDTO));
         return new ResponseEntity<>(RoomMapper.toRoomDTO(room),
                                     HttpStatus.CREATED);

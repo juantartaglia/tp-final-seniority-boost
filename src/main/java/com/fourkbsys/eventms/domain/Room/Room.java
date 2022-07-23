@@ -27,6 +27,6 @@ public class Room {
     Integer maxCapacity;
 
     @Enumerated(EnumType.STRING)
-    RoomStatus status;
+    RoomState state;
 
 }

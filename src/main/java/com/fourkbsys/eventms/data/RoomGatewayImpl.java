@@ -2,7 +2,7 @@ package com.fourkbsys.eventms.data;
 
 import com.fourkbsys.eventms.domain.Room.Room;
 import com.fourkbsys.eventms.domain.Room.RoomGateway;
-import com.fourkbsys.eventms.domain.Room.RoomStatus;
+import com.fourkbsys.eventms.domain.Room.RoomState;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class RoomGatewayImpl implements RoomGateway {
     }
 
     private Room toRoom(RoomEntity re) {
-        return new Room(re.getRoomId(), re.getName(), re.getDescription(), re.getLocation(), re.getMaxCapacity(), RoomStatus.of(re.getStatus()));
+        return new Room(re.getRoomId(), re.getName(), re.getDescription(), re.getLocation(), re.getMaxCapacity(), RoomState.of(re.getState()));
     }
 
     private RoomEntity toEntity(Room r) {
@@ -42,7 +42,7 @@ public class RoomGatewayImpl implements RoomGateway {
                 .name(r.getName())
                 .location(r.getLocation())
                 .maxCapacity(r.getMaxCapacity())
-                .status(r.getStatus().getStatus()).build();
+                .state(r.getState().getState()).build();
 
         if (r.getRoomId() != null) roomEntity.setRoomId(r.getRoomId());
 

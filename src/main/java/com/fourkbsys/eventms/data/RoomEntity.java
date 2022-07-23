@@ -29,6 +29,6 @@ public class RoomEntity {
     @Positive
     Integer maxCapacity;
 
-    String status;
+    String state;
 
 }

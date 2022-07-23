@@ -33,5 +33,5 @@ public class RoomDTO {
     @Positive(message = "maxCapacity must be greater than 0")
     Integer maxCapacity;
 
-    String status;
+    String state;
 }

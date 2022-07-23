@@ -2,7 +2,7 @@ package com.fourkbsys.eventms.web.mapper;
 
 
 import com.fourkbsys.eventms.domain.Room.Room;
-import com.fourkbsys.eventms.domain.Room.RoomStatus;
+import com.fourkbsys.eventms.domain.Room.RoomState;
 import com.fourkbsys.eventms.web.dto.RoomDTO;
 
 public abstract class RoomMapper {
@@ -14,7 +14,7 @@ public abstract class RoomMapper {
         room.setName(roomDTO.getName());
         room.setMaxCapacity(roomDTO.getMaxCapacity());
         room.setLocation(roomDTO.getLocation());
-        room.setStatus(RoomStatus.of(roomDTO.getStatus()));
+        room.setState(RoomState.of(roomDTO.getState()));
         return room;
     }
 
@@ -25,7 +25,7 @@ public abstract class RoomMapper {
         roomDTO.setName(room.getName());
         roomDTO.setMaxCapacity(room.getMaxCapacity());
         roomDTO.setLocation(room.getLocation());
-        roomDTO.setStatus(room.getStatus().getStatus());
+        roomDTO.setState(room.getState().getState());
         return roomDTO;
     }
 }

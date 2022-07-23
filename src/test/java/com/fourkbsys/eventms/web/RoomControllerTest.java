@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fourkbsys.eventms.domain.Room.Room;
 import com.fourkbsys.eventms.domain.Room.RoomService;
-import com.fourkbsys.eventms.domain.Room.RoomStatus;
+import com.fourkbsys.eventms.domain.Room.RoomState;
 import com.fourkbsys.eventms.web.dto.RoomDTO;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
@@ -42,7 +42,7 @@ public class RoomControllerTest {
     @DisplayName("getRoomById method should return a Room when roomId is valid")
     void getRoomById() throws Exception {
 
-        Room room = new Room(1L, "Name Room1", "Description Room1", "Location Room1", 10, RoomStatus.ENABLED);
+        Room room = new Room(1L, "Name Room1", "Description Room1", "Location Room1", 10, RoomState.ENABLED);
 
         Mockito.when(roomService.getById(1)).thenReturn(Optional.of(room));
 
@@ -57,7 +57,7 @@ public class RoomControllerTest {
                 .andExpect(jsonPath("description", Matchers.is("Description Room1")))
                 .andExpect(jsonPath("location", Matchers.is("Location Room1")))
                 .andExpect(jsonPath("maxCapacity", Matchers.is(10)))
-                .andExpect(jsonPath("status", Matchers.is("enabled")))
+                .andExpect(jsonPath("state", Matchers.is("enabled")))
                 .andReturn();
     }
 
@@ -65,7 +65,7 @@ public class RoomControllerTest {
     @DisplayName("getRoomById method should return status 404 when roomId is not found")
     void getRoomByIdNotFound() throws Exception {
 
-        Room room = new Room(1L, "Name Room1", "Description Room1", "Location Room1", 10, RoomStatus.ENABLED);
+        Room room = new Room(1L, "Name Room1", "Description Room1", "Location Room1", 10, RoomState.ENABLED);
 
         Mockito.when(roomService.getById(1)).thenReturn(Optional.empty());
 
@@ -82,8 +82,8 @@ public class RoomControllerTest {
     @DisplayName("getRoomList method should return a Room List")
     void getRoomList() throws Exception {
 
-        Room roomOne = new Room(1L, "Name Room1", "Description Room1", "Location Room1", 10, RoomStatus.ENABLED);
-        Room roomTwo = new Room(2L, "Name Room2", "Description Room2", "Location Room2", 20, RoomStatus.ENABLED);
+        Room roomOne = new Room(1L, "Name Room1", "Description Room1", "Location Room1", 10, RoomState.ENABLED);
+        Room roomTwo = new Room(2L, "Name Room2", "Description Room2", "Location Room2", 20, RoomState.ENABLED);
 
         Mockito.when(roomService.getAll()).thenReturn(List.of(roomOne, roomTwo));
 
@@ -96,7 +96,7 @@ public class RoomControllerTest {
                 .andExpect(jsonPath("$.size()").value(2))
                 .andExpect(jsonPath("$.[0].roomId").value(equalTo(1)))
                 .andExpect(jsonPath("$.[0].description").value(equalTo("Description Room1")))
-                .andExpect(jsonPath("$.[0].status").value(equalTo("enabled")))
+                .andExpect(jsonPath("$.[0].state").value(equalTo("enabled")))
                 .andExpect(jsonPath("$.[0].maxCapacity").value(equalTo(10)))
                 .andReturn();
     }
@@ -112,7 +112,7 @@ public class RoomControllerTest {
                 .description("Description Room1")
                 .location("Location Room1")
                 .maxCapacity(100)
-                .status(RoomStatus.ENABLED)
+                .state(RoomState.ENABLED)
                 .build();
 
         Room result = Room.builder()
@@ -121,7 +121,7 @@ public class RoomControllerTest {
                 .description("Description Room1")
                 .location("Location Room1")
                 .maxCapacity(100)
-                .status(RoomStatus.ENABLED)
+                .state(RoomState.ENABLED)
                 .build();
 
         RoomDTO roomDTO = RoomDTO.builder()
@@ -152,7 +152,6 @@ public class RoomControllerTest {
                 .name("Name Room1")
                 .description("Description Room1")
                 .location("Location Room1")
-                //.maxCapacity(100)
                 .build();
 
         ObjectMapper bodyInputObj = new ObjectMapper();

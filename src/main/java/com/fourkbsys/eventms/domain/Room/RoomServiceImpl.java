@@ -26,7 +26,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room createRoom(Room room) {
-        room.setStatus(RoomStatus.ENABLED);
+        room.setState(RoomState.ENABLED);
         return roomGateway.saveRoom(room);
     }
 }
