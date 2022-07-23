@@ -1,16 +1,14 @@
 package com.fourkbsys.eventms.data;
 
-import com.fourkbsys.eventms.domain.Room;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
+
 @Entity
 @Table(name = "room")
+@Builder
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,7 +17,7 @@ public class RoomEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String roomId;
+    long roomId;
 
     @NotBlank
     String name;
@@ -33,8 +31,4 @@ public class RoomEntity {
 
     String status;
 
-
-    public Room toRoom(RoomEntity roomEntity){
-        return new Room();
-    }
 }
