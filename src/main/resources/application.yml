@@ -7,7 +7,7 @@ spring:
 
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/rooftop-ticket-booking
+    url: jdbc:postgresql://localhost:5432/rooftop-event-booking
     username: demo
     password: demo123
     driverClassName: org.postgresql.Driver
