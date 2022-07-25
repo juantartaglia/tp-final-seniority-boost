@@ -78,5 +78,25 @@ Desarrollar un microservicio para la venta de entradas a eventos:
 | Al crear evento no es posible en la misma sala en la misma fecha y hora          | 5     | Done       |
 | Se usaron para cada caso las bases de datos solicitadas                          | 6     | To-Do      |
 | Por cada caso anterior (15) testeado correctamente con JUnit se agregan 4 puntos | 60    | WIP        |
-| Dockerizado de toda la app                                                       | 10    | To-Do      |
+| Dockerizado de toda la app                                                       | 10    | Done       |
 | Funcionalidad Adicional: Versionado de DB (Flyway)                               |       | Done       |
+
+
+**Entorno Docker** 🐳
+1. Desde la terminal ejecutar:
+   ```docker-compose up -d```
+
+Dicho comando creará los servicios postgres-ms y pgadmin, utilizados por la aplicación.
+
+2. Conexion a pgAdmin
+```http://localhost:9090```
+
+Usuario: admin@admin.com
+Contraseña: root
+
+3. Desde pgAdmin ejecutar siguente script:
+
+``CREATE DATABASE "rooftop-event-booking"
+   WITH OWNER = demo
+   ENCODING = 'UTF8';
+   ``
