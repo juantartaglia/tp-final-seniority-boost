@@ -16,17 +16,17 @@ import javax.validation.constraints.Positive;
 @AllArgsConstructor
 public class Room {
 
-    Long roomId;
+    private Long roomId;
     @NotBlank
-    String name;
+    private String name;
 
-    String description;
+    private String description;
     @NotBlank
-    String location;
+    private String location;
     @Positive
-    Integer maxCapacity;
+    private Integer maxCapacity;
 
     @Enumerated(EnumType.STRING)
-    RoomState state;
+    private RoomState state;
 
 }

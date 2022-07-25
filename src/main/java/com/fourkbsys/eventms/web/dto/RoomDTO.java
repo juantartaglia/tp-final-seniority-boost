@@ -15,23 +15,23 @@ import javax.validation.constraints.Positive;
 @Builder
 public class RoomDTO {
 
-    Long roomId;
+    private Long roomId;
 
     @NotNull(message = "name could not be null")
     @NotBlank(message = "name could not be empty")
-    String name;
+    private String name;
 
     @NotNull(message = "description could not be null")
     @NotBlank(message = "description could not be empty")
-    String description;
+    private String description;
 
     @NotNull(message = "location could not be null")
     @NotBlank(message = "location could not be empty")
-    String location;
+    private String location;
 
     @NotNull(message = "maxCapacity could not be null")
     @Positive(message = "maxCapacity must be greater than 0")
-    Integer maxCapacity;
+    private Integer maxCapacity;
 
-    String state;
+    private String state;
 }

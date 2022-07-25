@@ -1,5 +1,6 @@
 package com.fourkbsys.eventms.data;
 
+import com.fourkbsys.eventms.data.mapper.RoomMapper;
 import com.fourkbsys.eventms.domain.Room.Room;
 import com.fourkbsys.eventms.domain.Room.RoomGateway;
 import com.fourkbsys.eventms.domain.Room.RoomState;
@@ -29,24 +30,10 @@ public class RoomGatewayImpl implements RoomGateway {
 
     @Override
     public Room saveRoom(Room room) {
-        return toRoom(roomRepository.save(toEntity(room)));
+        return toRoom(roomRepository.save(RoomMapper.toEntity(room)));
     }
 
     private Room toRoom(RoomEntity re) {
         return new Room(re.getRoomId(), re.getName(), re.getDescription(), re.getLocation(), re.getMaxCapacity(), RoomState.of(re.getState()));
     }
-
-    private RoomEntity toEntity(Room r) {
-        RoomEntity roomEntity = RoomEntity.builder()
-                .description(r.getDescription())
-                .name(r.getName())
-                .location(r.getLocation())
-                .maxCapacity(r.getMaxCapacity())
-                .state(r.getState().getState()).build();
-
-        if (r.getRoomId() != null) roomEntity.setRoomId(r.getRoomId());
-
-        return roomEntity;
-    }
-
 }

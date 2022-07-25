@@ -17,7 +17,7 @@ public class RoomEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long roomId;
+    Long roomId;
 
     @NotBlank
     String name;
