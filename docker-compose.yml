@@ -1,0 +1,19 @@
+version: '3'
+services:
+  postgres-ms:
+    image: postgres:latest
+    container_name: postgres-ms
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo123
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - 9090:80
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
