@@ -60,22 +60,23 @@ Desarrollar un microservicio para la venta de entradas a eventos:
 
 **Puntuación / Backlog**
 
-| **Issue**                                                                                                            | **Valor** | **Estado** |
-|--------------------------------------------------------------------------------------|------------|---------------|
-| GET /events solo devuelve eventos de hoy y futuros    | 5       | Done |
-| GET /events?date=tomorrow solo devuelve eventos de mañana  | 4       | Done |
-| GET /events?date=past solo devuelve eventos pasados   | 3       | Done |
-| GET /events?date=today solo devuelve eventos de hoy   | 3       | Done |
-| GET /events?date=20220101 solo devuelve eventos de la fecha especificada | 3       | Done |
-| En caso que la fecha sea invalida devuelve un error HTTP  | 1       | Done |
-| En todos los casos anteriores incluye eventos con entradas agotadas    | 3       | Done |
-| No es posible comprar entradas si el evento ya es  pasado   | 2       | Done |
-| No es posible comprar entradas si ya se alcanzó el límte de capacidad   | 2       | Done |
-| DELETE /events/{id} borra el evento solicitado        | 3       | Done |
-| No es posible borrar un evento si tiene entradas vendidas      | 2       | Done |
-| POST /batch/events migra los datos correctamente      | 5       | To-Do |
-| Autoriza peticiones mediante un Bearer Token          | 3       | To-Do |
-| Al crear evento no es posible en la misma sala en la misma fecha y hora  | 5       | Done |
-| Se usaron para cada caso las bases de datos solicitadas | 6       | To-Do |
-| Por cada caso anterior (15) testeado correctamente con JUnit se agregan 4 puntos   | 60      | WIP |
-| Dockerizado de toda la app                            | 10      | To-Do |
+| **Issue**                                                                        | **Valor** | **Estado** |
+|----------------------------------------------------------------------------------|----------|------------|
+| GET /events solo devuelve eventos de hoy y futuros                               | 5     | Done       |
+| GET /events?date=tomorrow solo devuelve eventos de mañana                        | 4     | Done       |
+| GET /events?date=past solo devuelve eventos pasados                              | 3     | Done       |
+| GET /events?date=today solo devuelve eventos de hoy                              | 3     | Done       |
+| GET /events?date=20220101 solo devuelve eventos de la fecha especificada         | 3     | Done       |
+| En caso que la fecha sea invalida devuelve un error HTTP                         | 1     | Done       |
+| En todos los casos anteriores incluye eventos con entradas agotadas              | 3     | Done       |
+| No es posible comprar entradas si el evento ya es  pasado                        | 2     | Done       |
+| No es posible comprar entradas si ya se alcanzó el límte de capacidad            | 2     | Done       |
+| DELETE /events/{id} borra el evento solicitado                                   | 3     | Done       |
+| No es posible borrar un evento si tiene entradas vendidas                        | 2     | Done       |
+| POST /batch/events migra los datos correctamente                                 | 5     | To-Do      |
+| Autoriza peticiones mediante un Bearer Token                                     | 3     | To-Do      |
+| Al crear evento no es posible en la misma sala en la misma fecha y hora          | 5     | Done       |
+| Se usaron para cada caso las bases de datos solicitadas                          | 6     | To-Do      |
+| Por cada caso anterior (15) testeado correctamente con JUnit se agregan 4 puntos | 60    | WIP        |
+| Dockerizado de toda la app                                                       | 10    | To-Do      |
+| Funcionalidad Adicional: Versionado de DB (Flyway)                               |       | Done       |
