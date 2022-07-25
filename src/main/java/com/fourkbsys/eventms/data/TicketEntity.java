@@ -1,34 +1,38 @@
 package com.fourkbsys.eventms.data;
 
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "tickets")
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@Builder
 public class TicketEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String ticketId;
+    Long ticketId;
 
-    @NotBlank
-    String firstName;
-    String lastName;
+    @ManyToOne(optional=false, fetch=FetchType.LAZY)
+    @JoinColumn(name="assistantId")
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    AssistantEntity assistant;
 
-    @NotBlank
-    String document;
-
-    @NotBlank
-    @Email
-    String email;
-
-    String status;
+    String state;
 
     @ManyToOne(optional=false, fetch= FetchType.EAGER)
     @JoinColumn(name="eventId")
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     EventEntity event;
 
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }
